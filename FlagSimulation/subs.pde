@@ -45,41 +45,35 @@ void physics()
 // render
 void drawSheet()
 {
-  noStroke();
-  for (int j=0; j<numb-1; j++)
-  {
-    beginShape(TRIANGLE_STRIP);
-    texture(flag);
-    float xtweek = 1.02;
-    float ytweek = 1.05;
-    for (int i=0; i<numa; i++)
+	noStroke();
+	for (int j=0; j<numb-1; j++)
 	{
-      vertex(X[i][j].x, X[i][j].y, X[i][j].z,
-             elementWidth*i*xtweek, elementWidth*j*ytweek);
-      vertex(X[i][j+1].x, X[i][j+1].y, X[i][j+1].z,
-             elementWidth*i*xtweek, elementWidth*(j+1)*ytweek);      
-    }
-    endShape();
-  }
+		beginShape(TRIANGLE_STRIP);
+		texture(flag);
+		float xtweek = 1.02;
+		float ytweek = 1.05;
+		for (int i=0; i<numa; i++)
+		{
+			vertex(X[i][j].x, X[i][j].y, X[i][j].z,elementWidth*i*xtweek, elementWidth*j*ytweek);
+			vertex(X[i][j+1].x, X[i][j+1].y, X[i][j+1].z,elementWidth*i*xtweek, elementWidth*(j+1)*ytweek);      
+		}
+		endShape();
+	}
 }
 
 void setupConstraint()
 {
-  for (int j=0; j<numb; j++)
-  {
-    constraint[j] = new PVector(X[0][j].x,
-                                X[0][j].y,
-                                X[0][j].z);
-  }
+	for (int j=0; j<numb; j++)
+	{
+		constraint[j] = new PVector(X[0][j].x,X[0][j].y,X[0][j].z);
+	}
 }
 
 void useConstraint()
 {
-  for (int j=0; j<numb; j++)
-  {
-    X[0][j] = new PVector(constraint[j].x,
-                          constraint[j].y,
-                          constraint[j].z);
-    V[0][j] = new PVector();
-  }
+	for (int j=0; j<numb; j++)
+	{
+		X[0][j] = new PVector(constraint[j].x,constraint[j].y,constraint[j].z);
+		V[0][j] = new PVector();
+	}
 }
