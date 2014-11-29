@@ -34,7 +34,8 @@ class CollisionDetector implements ContactListener
 
     // returns the array of Method objects 
     Method[] myMethods = c.getDeclaredMethods();
-    for (int i = 0; i < myMethods.length; i++) {
+    for (int i = 0; i < myMethods.length; i++) 
+	{
       if (myMethods[i].getName().equals("collision"))
       {
         collisionMethod = myMethods[i];
@@ -51,22 +52,27 @@ class CollisionDetector implements ContactListener
   {
     if (collisionHappened)
     {
-      Object [] args = {
+      Object [] args = 
+	  {
         r.shape1.getBody(), r.shape2.getBody(), new Float(r.normalImpulse)
       };
       collisionMethod.setAccessible(true);
-      try {
+      try 
+	  {
         collisionMethod.invoke(m_applet, args);
       } 
-      catch (IllegalAccessException e) {
+      catch (IllegalAccessException e) 
+	  {
         System.out.println("Error invoking method " + collisionMethod.getName());
         e.printStackTrace();
       }
-      catch (InvocationTargetException e) {
+      catch (InvocationTargetException e) 
+	  {
         System.out.println("Error invoking method " + collisionMethod.getName());
         e.printStackTrace();
       } 
-      catch (NullPointerException e) {
+      catch (NullPointerException e) 
+	  {
         System.out.println("Error invoking method " + collisionMethod.getName());
         e.printStackTrace();
       }
