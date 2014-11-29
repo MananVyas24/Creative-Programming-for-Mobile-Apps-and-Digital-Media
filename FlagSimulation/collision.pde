@@ -23,42 +23,42 @@ boolean hasBeen = false;
 
 void collide()
 {
-  float bumpRad = elementWidth * 1.5;
-  if (hasBeen == false)
-  {
-    collisionSetup();
-    hasBeen = true;
-  }
-  
-  for (int i=1; i<nodeCount; i++)
-  {
-    for (int j=0; j<i; j++)
-	{
-      if (testAdjacency(i,j))
+	  float bumpRad = elementWidth * 1.5;
+	  if (hasBeen == false)
 	  {
-        PVector dx = PVector.sub(X[slate[j][0]][slate[j][1]],
-                                 X[slate[i][0]][slate[i][1]]);
-        if (abs(dx.x)<bumpRad)
+		collisionSetup();
+		hasBeen = true;
+	  }
+	  
+	  for (int i=1; i<nodeCount; i++)
+	  {
+		for (int j=0; j<i; j++)
 		{
-          if (abs(dx.y)<bumpRad)
+		  if (testAdjacency(i,j))
 		  {
-            if (abs(dx.z)<bumpRad)
+			PVector dx = PVector.sub(X[slate[j][0]][slate[j][1]],
+									 X[slate[i][0]][slate[i][1]]);
+			if (abs(dx.x)<bumpRad)
 			{
-              if (dx.mag()<bumpRad)
+			  if (abs(dx.y)<bumpRad)
 			  {
-                float delta = (bumpRad - dx.mag()) * k;
-                dx.normalize();
-                F[slate[j][0]][slate[j][1]].add(PVector.mult(
-                                                  dx,delta));
-                F[slate[i][0]][slate[i][1]].sub(PVector.mult(
-                                                  dx,delta));
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+				if (abs(dx.z)<bumpRad)
+				{
+				  if (dx.mag()<bumpRad)
+				  {
+					float delta = (bumpRad - dx.mag()) * k;
+					dx.normalize();
+					F[slate[j][0]][slate[j][1]].add(PVector.mult(
+													  dx,delta));
+					F[slate[i][0]][slate[i][1]].sub(PVector.mult(
+													  dx,delta));
+				  }
+				}
+			  }
+			}
+		  }
+		}
+	  }
 }
 
 boolean testAdjacency(int i,int j)
