@@ -3,45 +3,43 @@
 
 void reset()
 {
-  for (int i=0; i<numa; i++)
-  {
-    for (int j=0; j<numb; j++)
+	for (int i=0; i<numa; i++)
 	{
-      X[i][j] = new PVector(elementWidth * (i)+width/8,
-                            elementWidth * (j)+height/8,
-                            random(-0.1,0.1));
-      V[i][j] = new PVector();
-    }
-  }
+		for (int j=0; j<numb; j++)
+		{
+			X[i][j] = new PVector(elementWidth * (i)+width/8, elementWidth * (j)+height/8, random(-0.1,0.1));
+			V[i][j] = new PVector();
+		}
+	}
 }
 void physics()
 {
-  for (int i=0; i<numa; i++)
-  {
-    for (int j=0; j<numb; j++)
+	for (int i=0; i<numa; i++)
 	{
-      F[i][j] = new PVector(0.0,gravity,0.0);
-    }
-  }
-  for (int i=0; i<numa; i++)
-  {
-    for (int j=0; j<numb; j++)
+		for (int j=0; j<numb; j++)
+		{
+			F[i][j] = new PVector(0.0,gravity,0.0);
+		}
+	}
+	for (int i=0; i<numa; i++)
 	{
-      normalForce(i,j);
-      windForce(i,j);
-    }
-  }
-  // collision call once we have wind and the normal forces setup
-  collide();
-  for (int i=0; i<numa; i++)
-  {
-    for (int j=0; j<numb; j++)
+		for (int j=0; j<numb; j++)
+		{
+			normalForce(i,j);
+			windForce(i,j);
+		}
+	}
+	// collision call once we have wind and the normal forces setup
+	collide();
+	for (int i=0; i<numa; i++)
 	{
-      V[i][j].add(F[i][j]);
-      X[i][j].add(V[i][j]);
-    }
-  }
-  useConstraint();
+		for (int j=0; j<numb; j++)
+		{
+			V[i][j].add(F[i][j]);
+			X[i][j].add(V[i][j]);
+		}
+	}
+	useConstraint();
 }
 
 // render
