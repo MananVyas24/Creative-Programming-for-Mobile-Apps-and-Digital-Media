@@ -1,6 +1,6 @@
 /* @Manan Vyas 
  * Create a 3D model of a flag imported from its JPED in 2d
- * And then simulate the interaction of the flag with wind-friction and gravitational pull
+ * And then simulate the interaction of the flag with wind and normal forces
  */
  
 int numa = 40;
