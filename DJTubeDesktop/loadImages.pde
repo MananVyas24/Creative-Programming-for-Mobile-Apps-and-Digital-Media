@@ -5,18 +5,18 @@
  */
 PImage [] loadImages(String stub, String extension, int numImages)
 {
-  PImage [] images = new PImage[0];
-  for(int i =0; i < numImages; i++)
-  {
-    PImage img = loadImage(stub+i+extension);
-    if(img != null)
+    PImage [] images = new PImage[0];
+    for(int i =0; i < numImages; i++)
     {
-      images = (PImage [])append(images,img);
+        PImage img = loadImage(stub+i+extension);
+        if(img != null)
+        {
+            images = (PImage [])append(images,img);
+        }
+        else
+        {
+            break;
+        }
     }
-    else
-    {
-      break;
-    }
-  }
-  return images;
+    return images;
 }
