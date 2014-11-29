@@ -25,18 +25,18 @@ void setup()
 void draw()
 {
   
-	image(images[currentPosition], 0, 0);
-	// the if statement means that
-	// we only move to the next frame 
-	// if playing is true
-	if(playing)
-	{
-		currentPosition += 1;
-		if(currentPosition >= images.length)
-		{
-			currentPosition = 0;
-		}
-	}
+    image(images[currentPosition], 0, 0);
+    // the if statement means that
+    // we only move to the next frame 
+    // if playing is true
+    if(playing)
+    {
+        currentPosition += 1;
+        if(currentPosition >= images.length)
+        {
+            currentPosition = 0;
+        }
+    }
 }
 
 // when the mouse is pressed
@@ -45,7 +45,7 @@ void draw()
 // false and vice versa)
 void mousePressed()
 {
-	playing = !playing;
+    playing = !playing;
 }
 
 

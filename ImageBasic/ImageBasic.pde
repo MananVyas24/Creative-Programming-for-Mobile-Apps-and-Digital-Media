@@ -9,15 +9,15 @@ PImage img;
 
 void setup()
 {
-  // load the image  from file
-  img = loadImage("movie44.jpg");
-  // set the size of the screen to be 
-  // the same as the image
-  size(img.width, img.height);
+    // load the image  from file
+    img = loadImage("movie44.jpg");
+    // set the size of the screen to be 
+    // the same as the image
+    size(img.width, img.height);
 }
 
 void draw()
 {
-  // display the image
-  image(img, 0, 0);
+    // display the image
+    image(img, 0, 0);
 }

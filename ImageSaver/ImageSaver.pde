@@ -15,40 +15,47 @@ int currentFrame = -1;
 
 String fileName = null;
 
-void setup() {
-  size(420, 280);
-  selectInput("Select a file to process:", "fileSelected");
-  //myMovie = new Movie(this, "/Users/marco/Movies/drawing.mov");
-  noLoop();
-}
-
-void fileSelected(File selection) {
-  if (selection == null) {
-    println("Window was closed or the user hit cancel.");
-  } else {
-    println("User selected " + selection.getAbsolutePath());
-    myMovie = new Movie(this, selection.getAbsolutePath());
-    myMovie.play();
-  }
-}
-
-void draw() {
-  if(myMovie != null)
-  {
-    image(myMovie, 0, 0, width, map(myMovie.height, 0, myMovie.width, 0,width));
+void setup() 
+{
+    size(420, 280);
+    selectInput("Select a file to process:", "fileSelected");
+    //myMovie = new Movie(this, "/Users/marco/Movies/drawing.mov");
     noLoop();
-    currentFrame++;
-  }
+}
+
+void fileSelected(File selection) 
+{
+    if (selection == null) 
+    {
+        println("Window was closed or the user hit cancel.");
+    } 
+    else 
+    {
+        println("User selected " + selection.getAbsolutePath());
+        myMovie = new Movie(this, selection.getAbsolutePath());
+        myMovie.play();
+    }
+}
+
+void draw() 
+{
+    if(myMovie != null)
+    {
+        image(myMovie, 0, 0, width, map(myMovie.height, 0, myMovie.width, 0,width));
+        noLoop();
+        currentFrame++;
+    }
 }
 
 // Called every time a new frame is available to read
-void movieEvent(Movie m) {
-  m.read();
-  fileName = "movie" + currentFrame + ".jpg";
-  loop();
-//  if (currentFrame >=0) {
-  saveFrame(fileName);
-//  }
-  noLoop();
+void movieEvent(Movie m) 
+{
+    m.read();
+    fileName = "movie" + currentFrame + ".jpg";
+    loop();
+    //  if (currentFrame >=0) {
+    saveFrame(fileName);
+    //  }
+    noLoop();
 }
 

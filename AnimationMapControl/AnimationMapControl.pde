@@ -19,30 +19,30 @@ void setup()
 
 void draw()
 {
-	float imageWidth = (height*images[currentPosition].width)/images[currentPosition].height;
-	image(images[currentPosition], 0, 0, imageWidth, height);
-	// I've removed currentPosition+=1
-	// because the animation is controlled by 
-	// the mouse
-	if(currentPosition >= images.length)
-	{
-		currentPosition = 0;
-	}
+    float imageWidth = (height*images[currentPosition].width)/images[currentPosition].height;
+    image(images[currentPosition], 0, 0, imageWidth, height);
+    // I've removed currentPosition+=1
+    // because the animation is controlled by 
+    // the mouse
+    if(currentPosition >= images.length)
+    {
+        currentPosition = 0;
+    }
   
 }
 
 
 void mouseDragged()
 {
-	  // map the x position of the mouse from 
-	  // the width of the screen to the length of
-	  // the animation
-	  // and use that as the current position
-	  currentPosition = (int)map(mouseX, 0, width, 0, images.length-1);
-	  // this makes sure that the currentPosition
-	  // doesn't go below 0 or above the length 
-	  // of the animation
-	  currentPosition = constrain(currentPosition, 0, images.length-1);
+      // map the x position of the mouse from 
+      // the width of the screen to the length of
+      // the animation
+      // and use that as the current position
+      currentPosition = (int)map(mouseX, 0, width, 0, images.length-1);
+      // this makes sure that the currentPosition
+      // doesn't go below 0 or above the length 
+      // of the animation
+      currentPosition = constrain(currentPosition, 0, images.length-1);
 }
 
 

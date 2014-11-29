@@ -12,58 +12,58 @@ boolean playit = false;
 
 void setup() 
 {
-	  //The size is iPad Portrait.
-	  //If you want landscape, you should swap the values.
-	  // comment out if you are on android! 
-	  size(768, 1024); 
-	  frameRate(20); // this is the framerate. Tweak for performance.
-	  maxim = new Maxim(this);
-	  player = maxim.loadFile("mybeat.wav");
-	  player.setLooping(true);
-	  player.setAnalysing(true);
-	  rectMode(CENTER);
+    //The size is iPad Portrait.
+    //If you want landscape, you should swap the values.
+    // comment out if you are on android! 
+    size(768, 1024); 
+    frameRate(20); // this is the framerate. Tweak for performance.
+    maxim = new Maxim(this);
+    player = maxim.loadFile("mybeat.wav");
+    player.setLooping(true);
+    player.setAnalysing(true);
+    rectMode(CENTER);
 }
  
 void draw() 
 {
-		background(0);   
-	 
-		println(wait);
-		//  noFill();
-	  
-	  if (playit) 
-	  {
-			fill(255);
-			player.play(); 
-			power = player.getAveragePower(); 
-			ellipse(mouseX,mouseY,power*500,power*500);
-			if (power>threshold && wait < 0) 
-			{
-				rect(0,0,500,500);
-				wait=4;
-			}
-			wait--;
-	  }
+    background(0);   
+
+    println(wait);
+    //  noFill();
+
+    if (playit) 
+    {
+        fill(255);
+        player.play(); 
+        power = player.getAveragePower(); 
+        ellipse(mouseX,mouseY,power*500,power*500);
+        if (power>threshold && wait < 0) 
+        {
+            rect(0,0,500,500);
+            wait=4;
+        }
+        wait--;
+    }
 }
   
 
 
 void mousePressed() 
 {
-  
-    playit = !playit;
-    
-    if (playit) 
-	{
 
-         player.play(); 
- 
+    playit = !playit;
+
+    if (playit) 
+    {
+
+        player.play(); 
+
     } 
-	else 
-	{
-     
-     player.stop(); 
-      
+    else 
+    {
+
+        player.stop(); 
+
     }
   
 }
